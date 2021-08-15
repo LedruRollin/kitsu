@@ -134,7 +134,7 @@
           :href="currentPreviewDlPath"
           v-if="extension && extension.length > 0"
         >
-          <download-icon class="icon" />
+          <icon name="download" class="icon" />
           <span class="text">
             {{ $t('tasks.download_pdf_file', {extension: extension}) }}
           </span>
@@ -736,7 +736,6 @@
 import moment from 'moment-timezone'
 import { mapActions, mapGetters } from 'vuex'
 import { fabric } from 'fabric'
-import { ArrowUpRightIcon, DownloadIcon } from 'vue-feather-icons'
 
 import { formatFrame, formatTime, roundToFrame } from '@/lib/video'
 import AnnotationBar from '@/components/pages/playlists/AnnotationBar'
@@ -744,6 +743,7 @@ import ButtonSimple from '@/components/widgets/ButtonSimple'
 import ColorPicker from '@/components/widgets/ColorPicker'
 import Combobox from '@/components/widgets/Combobox'
 import DeleteModal from '@/components/modals/DeleteModal'
+import Icon from '@/components/widgets/Icon'
 import PencilPicker from '@/components/widgets/PencilPicker'
 import PlaylistedEntity from '@/components/pages/playlists/PlaylistedEntity'
 import RawVideoPlayer from '@/components/pages/playlists/RawVideoPlayer'
@@ -761,12 +761,11 @@ export default {
 
   components: {
     AnnotationBar,
-    ArrowUpRightIcon,
     ButtonSimple,
     ColorPicker,
     Combobox,
-    DownloadIcon,
     DeleteModal,
+    Icon,
     PencilPicker,
     PlaylistedEntity,
     RawVideoPlayer,
@@ -882,7 +881,7 @@ export default {
     })
   },
 
-  beforeDestroy () {
+  beforeUnmount () {
     this.endAnnotationSaving()
     this.removeEvents()
   },
